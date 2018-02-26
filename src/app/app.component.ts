@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'Cadaver Exquisito';
+  poemas = [
+    true,
+    true
+  ]
+  onPoemMostrar(input) {
+    this.poemas[input.id] = input.mostrar;   
+  }
 }
