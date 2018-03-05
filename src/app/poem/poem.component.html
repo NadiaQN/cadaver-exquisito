@@ -1,7 +1,4 @@
 <div *ngFor='let verso of versos'>
-  <p *ngIf='mostrarVersos'>
-    {{verso}}
-  </p>
+  <app-verso [verso]='verso'></app-verso>
 </div>
-<input type="button" value="Mostrar" (click)="onMostrarClick()">
-
+<app-verso-form (submit)='onSubmit($event)'></app-verso-form>
