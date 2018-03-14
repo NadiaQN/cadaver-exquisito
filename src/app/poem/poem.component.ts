@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Verso } from '../verso';
+import { Observable } from 'rxjs/Observable';
 
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database-deprecated';
 
 @Component({
   selector: 'app-poem',
@@ -11,19 +13,20 @@ export class PoemComponent implements OnInit {
   @Input() id:number;
   @Input() mostrarVersos:boolean;
   @Output() onMostrar = new EventEmitter<any>();
-  versos:Array<Verso> = [];
-  constructor() {
-    let newVerso = new Verso();
-    newVerso.nombreJugador = 'La computadora';
-    newVerso.contenido = 'Cuando supe que ya no me querias...'
-    this.versos.push(newVerso);
-   }
+  versos:FirebaseListObservable<any[]>;
+  constructor(private af:AngularFireDatabase) {
 
-  ngOnInit() {  
+  }
+  ngOnInit() { 
+    this.versos = this.af.list('/versos');
   }
 
   onSubmit(verso:Verso) {
-    this.versos.push(verso);
+    this.versos.push({content: verso.contenido, player: verso.nombreJugador});
+  }
+
+  addVerso(player:string, verso:string):void {
+
   }
 
 }

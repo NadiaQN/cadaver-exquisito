@@ -12,10 +12,12 @@ import { environment } from '../environments/environment';
 import { RegisterComponent } from './register/register.component';
 import { RegisterModalComponent } from './register-modal/register-modal.component';
 import { AuthService } from './auth.service';
+import { AngularFireDatabase } from 'angularfire2/database-deprecated';
 // Material Angular
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule, MatInputModule } from '@angular/material';
+import { LoginModalComponent } from './login-modal/login-modal.component';
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import { MatFormFieldModule, MatInputModule } from '@angular/material';
     VersoFormComponent,
     VersoComponent,
     RegisterComponent,
-    RegisterModalComponent
+    RegisterModalComponent,
+    LoginModalComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -37,11 +40,13 @@ import { MatFormFieldModule, MatInputModule } from '@angular/material';
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AngularFireDatabase],
   bootstrap: [AppComponent],
   entryComponents: [
     RegisterComponent,
-    RegisterModalComponent
+    RegisterModalComponent,
+    LoginModalComponent,
+    AppComponent
   ]
 })
 export class AppModule { }

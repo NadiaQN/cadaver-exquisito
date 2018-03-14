@@ -7,7 +7,7 @@ import { Verso } from '../verso';
   styleUrls: ['./verso.component.css']
 })
 export class VersoComponent implements OnInit {
-  @Input() verso:Verso;
+  @Input() verso:any;
 
   constructor() { }
 

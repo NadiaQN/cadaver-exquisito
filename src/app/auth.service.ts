@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -24,5 +22,17 @@ export class AuthService {
       .catch((error) => {
         console.log('TODO SE FUE A LA B >' + error)
       })
+   }
+
+   login(email:string, password:string) {
+     this.firebaseAuth
+     .auth
+     .signInWithEmailAndPassword(email, password)
+     .then((value) => {
+      console.log('Success!! ah-ah:', value);
+     })
+     .catch((error) => {
+      console.log('TODO SE FUE A LA B >' + error);
+     })
    }
 }
