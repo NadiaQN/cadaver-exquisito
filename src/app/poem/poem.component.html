@@ -1,4 +1,4 @@
 <div *ngFor='let verso of (versos | async)'>
-  <app-verso [verso]='verso'></app-verso>
+  <app-verso [verso]='verso' (removeVerso)="deleteVerso($event)"></app-verso>
 </div>
 <app-verso-form (submit)='onSubmit($event)'></app-verso-form>

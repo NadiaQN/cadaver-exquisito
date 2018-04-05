@@ -29,4 +29,8 @@ export class PoemComponent implements OnInit {
 
   }
 
+  deleteVerso(versoId:string) {
+    this.af.object('/versos/' + versoId).remove();
+  }
+
 }
